@@ -1,0 +1,35 @@
+// newjsp.jsp
+
+<%@ page language="java" import="java.util.*"  %>
+<%
+
+String d=request.getParameter("txt");
+Date DATE= new Date();
+String dd=DATE.toLocaleString();
+
+String buff[]=dd.split(" ");
+out.println(DATE.getHours()+" Date and Time ."+DATE);
+
+if(DATE.getHours()<12&&buff[4].equals("AM"))
+out.println("Good Morning.."+d);
+else if(DATE.getHours()==12&&buff[4].equals("PM"))
+out.println("Good Afternoon.."+d);
+
+else if(DATE.getHours()<18&&buff[4].equals("PM"))
+out.println("Good Afternoon.."+d);
+else if(DATE.getHours()>=18&&buff[4].equals("PM"))
+out.println("Good Evening.."+d);
+
+%>
+
+// html file below  newhtml.html
+
+<html>
+<body>
+<form method="POST" action="http://localhost:8080/WebApplication4/new.jsp">
+<input type="text" name="txt">
+
+<input type="button" value="ok">
+</form>
+</body>
+</html>
